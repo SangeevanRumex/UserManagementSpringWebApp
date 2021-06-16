@@ -31,4 +31,26 @@ public class UserManagementService {
         users.add(user);
         return "User successfully created";
     }
+
+    public String updateUser(int id, User user) {
+        for(int i=0; i<users.size();i++){
+            User u = users.get(i);
+            if(u.getId() == id){
+                users.set(i,user);
+                return "User successfully updated";
+            }
+        }
+        return "User not found";
+    }
+
+    public String deleteUser(int id) {
+        for(int i=0; i<users.size();i++){
+            User u = users.get(i);
+            if(u.getId() == id){
+                users.remove(i);
+                return "User successfully deleted";
+            }
+        }
+        return "User not found";
+    }
 }

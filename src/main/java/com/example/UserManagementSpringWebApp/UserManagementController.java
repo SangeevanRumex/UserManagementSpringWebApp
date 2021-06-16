@@ -13,7 +13,7 @@ public class UserManagementController {
     UserManagementService service;
 
     @GetMapping("/users")
-    public List<User> getUser() {
+    public List<User> getUsers() {
         return service.getUsers();
     }
 
@@ -25,6 +25,16 @@ public class UserManagementController {
     @PostMapping("/add-user")
     public String createUser(@RequestBody User user){
         return service.addUser(user);
+    }
+
+    @PutMapping("/update-user/{id}")
+    public String updateUser(@RequestBody User user,@PathVariable int id){
+        return service.updateUser(id,user);
+    }
+
+    @DeleteMapping("/delete-user/{id}")
+    public String deleteUser(@PathVariable int id){
+        return service.deleteUser(id);
     }
 
 }
